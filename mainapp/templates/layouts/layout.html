@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-    <html lang="es">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <title>
@@ -23,14 +22,16 @@
         </div>
     </header>
 
-        <!-- Barra de navegación -->
-        <nav>
-            <ul>
+    <!-- Barra de navegación -->
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">Inicio</a>
+            </li>
+            
+            {% if user.email %}
+                <!-- Opciones cuando el usuario ha iniciado sesión -->
                 <li>
-                    <a href="{% url 'index' %}">Inicio</a>
-                </li>
-
-              <li>
                     <a href="{% url 'list_articles' %}">Categorías</a>
                     <ul>
                         {% for category in categories %}
@@ -40,29 +41,42 @@
                         {% endfor %}
                     </ul>
                 </li>
-               {% for page in pages %}
+                {% for page in pages %}
                     <li>
                         <a href="{% url 'page' page.slug %}">{{ page.title }}</a>
                     </li>
                 {% endfor %}
-                
-            </ul>
-        </nav>
+                <li>
+                    <a href="{% url 'logout' %}">Cerrar sesion</a>
+                </li>
 
-        <!-- Contenido principal -->
-        <div id="content">
-            <div class="box">
-                <h2 class="title"></h2>
-                {% block content %}
-                    <p>Contenido del bloque original</p>
-                {% endblock %}
-            </div>
+            {% else %}
+                <!-- Opciones cuando el usuario NO ha iniciado sesión -->
+                <li>
+                    <a href="{% url 'register' %}">Registro</a>
+                </li>
+                <li>
+                    <a href="{% url 'login' %}">Login</a>
+                </li>
+            {% endif %}
+            
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div id="content">
+        <div class="box">
+            <h2 class="title"></h2>
+            {% block content %}
+                <p>Contenido del bloque original</p>
+            {% endblock %}
         </div>
+    </div>
 
-        <!-- Pie de página -->
-        <footer>
-            Programación con Django - ADSO 2026 &copy; Instructor Moisés Garcia - {% now "d/m/Y h:m:s" %}
-        </footer>
+    <!-- Pie de página -->
+    <footer>
+        Programación con Django - ADSO 2026 &copy; Instructor Moisés Garcia - {% now "d/m/Y h:m:s" %}
+    </footer>
 
-    </body>
+</body>
 </html>

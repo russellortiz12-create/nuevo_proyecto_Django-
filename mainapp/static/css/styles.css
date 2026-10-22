@@ -152,6 +152,20 @@ nav > ul > li:hover > ul > li:hover a{
     color: #1f7e58 ;
 }
 
+/*Estilos para message*/
+.message,
+.alert-success,
+.alert{
+    padding: 20px;
+    background: #1f7e58;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.alert-warning{
+    background: #9e2506;
+}
 /*Estilos para title*/
 .title{
     color: #444;
@@ -189,6 +203,16 @@ footer{
 .box form input[type="text"],
 .box form textarea,
 .box form select {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/*ancho de los controles*/
+.box form input[type="text"],
+.box form input[type="email"],
+.box form input[type="password"],
+.box form textarea,
+.box form select{
     width: 100%;
     margin-bottom: 10px;
 }

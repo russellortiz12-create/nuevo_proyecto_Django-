@@ -19,7 +19,7 @@ class PageNavigationTests(TestCase):
         self.assertContains(response, 'href="/"')
         self.assertContains(response, 'Inicio')
         self.assertNotContains(response, 'Sobre Nosotros')
-        self.assertContains(response, 'href="/pagina/pagina-prueba"')
+        self.assertContains(response, 'href="/pagina/pagina-prueba/"')
         self.assertContains(response, 'Página de prueba')
 
     def test_hidden_pages_are_not_in_navigation(self):
